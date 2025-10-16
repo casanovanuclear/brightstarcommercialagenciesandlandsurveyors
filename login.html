@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Admin Login</title></head>
+<body style="display:flex;align-items:center;justify-content:center;height:100vh;background:linear-gradient(#1b5e20,#4caf50);font-family:Arial,sans-serif;color:#fff;">
+  <div style="background:rgba(255,255,255,0.08);padding:28px;border-radius:8px;width:320px;text-align:center;">
+    <h2>Admin Login</h2>
+    <input id="username" placeholder="Username" style="width:90%;padding:10px;margin:8px 0;border-radius:6px;border:none"/><br>
+    <input id="password" type="password" placeholder="Password" style="width:90%;padding:10px;margin:8px 0;border-radius:6px;border:none"/><br>
+    <button onclick="login()" style="padding:10px 16px;background:#2e7d32;border:none;color:#fff;border-radius:6px;cursor:pointer">Login</button>
+    <p style="margin-top:10px"><a href="/admin/reset_request.html" style="color:yellow">Forgot password?</a></p>
+    <p id="err" style="color:yellow;display:none"></p>
+  </div>
+  <script src="/admin/login.js"></script>
+</body>
+</html>

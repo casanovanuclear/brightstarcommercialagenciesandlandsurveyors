@@ -1,0 +1,107 @@
+<?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "brightstar";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brightstar Commercial Agencies & Land Surveyors</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="images/logo.jpeg" alt="Brightstar Logo" class="logo">
+      <div class="title-text">
+        <h1>Brightstar Commercial Agencies & Land Surveyors</h1>
+        <p>Reliable Land Services for a Growing Nation</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#why">Why Choose Us</a>
+    <a href="#services">Services</a>
+    <a href="#units">Available Units</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Brightstar Commercial Agencies & Land Surveyors is a trusted name in land and property solutions in Kenya. We specialize in reliable land surveying, subdivision, title processing, and property advisory services. Our mission is to simplify land ownership processes while providing professional guidance and dependable results.</p>
+    </section>
+
+    <section id="why">
+      <h2>Why Choose Us</h2>
+      <ul>
+        <li>Licensed and experienced surveyors and agents.</li>
+        <li>Comprehensive services from subdivision to title deed processing.</li>
+        <li>Integrity and transparency in every transaction.</li>
+        <li>Local expertise with nationwide reach.</li>
+        <li>Customer-centered service from start to finish.</li>
+      </ul>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="slideshow-container">
+        <div class="slide fade"><img src="service1.jpg" alt="Service 1"></div>
+        <div class="slide fade"><img src="service2.jpeg" alt="Service 2"></div>
+        <div class="slide fade"><img src="service3.jpg" alt="Service 3"></div>
+      </div>
+      <ul>
+        <li>Land Subdivision & Amalgamation</li>
+        <li>Boundary Identification</li>
+        <li>Cadastral and Sectional Property Survey</li>
+        <li>Land Transfers & Title Processing</li>
+        <li>Mapping, Analysis & Land Sales</li>
+      </ul>
+    </section>
+
+    <section id="units">
+      <h2>Available Land Units</h2>
+      <?php while ($row = mysqli_fetch_assoc($result)): ?>
+        <div class="unit">
+          <h3><?= htmlspecialchars($row['title']); ?></h3>
+          <p><strong>Size:</strong> <?= htmlspecialchars($row['size']); ?></p>
+          <p><strong>Price:</strong> Ksh <?= number_format($row['price']); ?></p>
+          <p class="<?= $row['status'] == 'Sold' ? 'sold' : 'available'; ?>">
+            Status: <?= htmlspecialchars($row['status']); ?>
+          </p>
+        </div>
+      <?php endwhile; ?>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p><strong>Phone:</strong> <a href="tel:+254722392661">+254 722 392 661</a> / <a href="tel:+254721767325">+254 721 767 325</a></p>
+      <p><strong>Email:</strong> <a href="mailto:brightstarcommercialagencies@gmail.com">brightstarcommercialagencies@gmail.com</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/254722392661" target="_blank">Chat on WhatsApp</a></p>
+      <p><strong>Address:</strong> Naivasha Town, Mama Ngina Street opposite Manera Hardware</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Brightstar Commercial Agencies & Land Surveyors. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+  let slideIndex = 0;
+  showSlides();
+  function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 4000);
+  }
+  </script>
+</body>
+</html>
